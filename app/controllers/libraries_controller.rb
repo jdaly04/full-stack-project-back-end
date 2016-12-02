@@ -49,11 +49,11 @@ class LibrariesController < ApplicationController
 
   private
 
-    def set_library
-      @library = Library.find(params[:id])
-    end
+  def set_library
+    @library = Library.find(params[:id])
+  end
 
-    def library_params
-      params.require(:library).permit(:user_id, :fundraiser_id)
-    end
+  def library_params
+    params.require(:library).permit(:name)
+  end
 end
