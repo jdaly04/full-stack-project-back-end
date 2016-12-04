@@ -1,4 +1,4 @@
-class LibrariesController < ApplicationController
+class LibrariesController < OpenReadController
   before_action :set_library, only: [:show, :update, :destroy]
 
   # GET /libraries
@@ -21,7 +21,7 @@ class LibrariesController < ApplicationController
     @library = Library.new(library_params)
 
     if @library.save
-      render json: @library, status: :created, location: @library
+      render json: @library, status: :created
     else
       render json: @library.errors, status: :unprocessable_entity
     end
