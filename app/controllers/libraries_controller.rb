@@ -18,7 +18,7 @@ class LibrariesController < OpenReadController
   # POST /libraries
   # POST /libraries.json
   def create
-    @library = Library.new(library_params)
+    @library = current_user.libraries.build(library_params)
 
     if @library.save
       render json: @library, status: :created
@@ -30,7 +30,7 @@ class LibrariesController < OpenReadController
   # PATCH/PUT /libraries/1
   # PATCH/PUT /libraries/1.json
   def update
-    @library = Library.find(params[:id])
+    @library = current_user.libraries.find(params[:id])
 
     if @library.update(library_params)
       head :no_content
@@ -50,7 +50,7 @@ class LibrariesController < OpenReadController
   private
 
   def set_library
-    @library = Library.find(params[:id])
+    @library = current_user.libraries.find(params[:id])
   end
 
   def library_params

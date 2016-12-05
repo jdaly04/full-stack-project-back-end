@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get '/fundraisers', to: 'fundraisers#index'
   post '/libraries', to: 'libraries#create'
-  patch '/libraries/:fundraiser_id', to: 'libraries#update'
+  patch '/libraries/:id', to: 'libraries#update'
   delete '/libraries/:id', to: 'libraries#destroy'
   resources :users, only: [:index, :show]
 end
