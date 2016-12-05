@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130165259) do
+ActiveRecord::Schema.define(version: 20161201230146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,19 @@ ActiveRecord::Schema.define(version: 20161130165259) do
     t.string   "city"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "library_id"
   end
+
+  create_table "libraries", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "fundraiser_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "name"
+  end
+
+  add_index "libraries", ["fundraiser_id"], name: "index_libraries_on_fundraiser_id", using: :btree
+  add_index "libraries", ["user_id"], name: "index_libraries_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -46,4 +58,6 @@ ActiveRecord::Schema.define(version: 20161130165259) do
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
 
   add_foreign_key "examples", "users"
+  add_foreign_key "libraries", "fundraisers"
+  add_foreign_key "libraries", "users"
 end
