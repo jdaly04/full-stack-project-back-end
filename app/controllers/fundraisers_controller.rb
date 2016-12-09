@@ -9,8 +9,8 @@ class FundraisersController < ApplicationController
     render json: @fundraiser
   end
 
-  # POST /libraries
-  # POST /libraries.json
+  # POST /fundraisers
+  # POST /fundraisers.json
   def create
     @fundraiser = Fundraiser.new(fundraiser_params)
 
@@ -21,8 +21,6 @@ class FundraisersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /libraries/1
-  # PATCH/PUT /libraries/1.json
   def update
     @fundraiser = Fundraiser.find(params[:id])
 
@@ -33,8 +31,6 @@ class FundraisersController < ApplicationController
     end
   end
 
-  # DELETE /libraries/1
-  # DELETE /libraries/1.json
   def destroy
     @fundraiser.destroy
 
