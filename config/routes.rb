@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/sign-in' => 'users#signin'
   delete '/sign-out/:id' => 'users#signout'
   patch '/change-password/:id' => 'users#changepw'
-
+  get '/libraries', to: 'libraries#index'
   get '/fundraisers', to: 'fundraisers#index'
   post '/libraries', to: 'libraries#create'
   patch '/libraries/:id', to: 'libraries#update'
