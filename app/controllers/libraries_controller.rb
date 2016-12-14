@@ -4,7 +4,8 @@ class LibrariesController < OpenReadController
   # GET /libraries
   # GET /libraries.json
   def index
-    @libraries = Library.all
+    @libraries = current_user.libraries
+    # @libraries = Library.all
 
     render json: @libraries
   end
@@ -42,6 +43,7 @@ class LibrariesController < OpenReadController
   # DELETE /libraries/1
   # DELETE /libraries/1.json
   def destroy
+    # @library = current_user.libraries
     @library.destroy
 
     head :no_content
